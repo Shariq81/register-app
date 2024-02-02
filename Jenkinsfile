@@ -19,7 +19,7 @@ pipeline {
       steps {
         sh "mvn clean package"
       }
-    } // Missing closing brace added here
+    } 
     stage("Test Application"){
       steps { 
         sh "mvn test"
