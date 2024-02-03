@@ -82,6 +82,11 @@ pipeline {
       steps {
         script {
             sh "curl -v -k --user clouduser:${JENKINS_API_TOKEN} -X POST -H 'Content-Type: application/x-www-form-urlencoded' --data 'IMAGE_TAG=${IMAGE_TAG}' 'http://ec2-54-189-189-57.us-west-2.compute.amazonaws.com:8080/job/${App_Name}/buildWithParameters?token=gitops-token'"
+            RESPONSE=$(curl -v -k --user clouduser:${JENKINS_API_TOKEN} -X POST \
+            -H 'Content-Type: application/x-www-form-urlencoded' \
+            --data 'IMAGE_TAG=${IMAGE_TAG}' \
+            'http://ec2-54-189-189-57.us-west-2.compute.amazonaws.com:8080/job/register-app-pipeline/buildWithParameters?token=gitops-token')
+            echo "Server response: $RESPONSE"
         }
       }
     }
