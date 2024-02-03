@@ -9,8 +9,8 @@ pipeline {
           Release_Version = '1.0.0'
           DOCKER_USER = 'shariq81'
           DOCKER_PASS = 'dockerhub'
-          IMAGE_NAME = '${DOCKER_USER}/${App_Name}'
-          IMAGE_TAG = '${Release_Version}-${BUILD_NUMBER}'
+          IMAGE_NAME = "${DOCKER_USER}" + "/" + "${App_Name}"
+          IMAGE_TAG = "${Release_Version}-${BUILD_NUMBER}"
   }
   stages{
     stage("Cleanup Workspace"){
